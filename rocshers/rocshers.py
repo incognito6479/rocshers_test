@@ -16,11 +16,10 @@ def url_validator(x):
         return False
 
 
-def find_url_available_methods(n):
-    start_time = datetime.datetime.now()
+def url_sort(file_path):
     valid_urls = []
     counter = 0
-    with open("rocshers/urls.txt") as urls:
+    with open(file_path) as urls:
         for url in urls:
             counter += 1
             url = url.strip()
@@ -32,6 +31,12 @@ def find_url_available_methods(n):
                 valid_urls.append(url)
             else:
                 ERRORS.append(counter)
+    return valid_urls
+
+
+def find_url_available_methods():
+    start_time = datetime.datetime.now()
+    valid_urls = url_sort("rocshers/urls.txt")
     for url in valid_urls:
         connection = http.client.HTTPConnection(url)
         for method in HTTP_METHODS:
@@ -49,8 +54,8 @@ def find_url_available_methods(n):
         for i in ERRORS:
             print(f"    Line {i} is not a valid url")
     print(f"\nПотраченное время: {datetime.datetime.now() - start_time}")
-    return n
+    return ANSWERS
 
 
 if __name__ == '__main__':
-    find_url_available_methods(1)
+    find_url_available_methods()
