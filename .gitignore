@@ -1,0 +1,4 @@
+.venv/
+.idea/
+rocshers/__pycache__/
+tests/__pycache__/
