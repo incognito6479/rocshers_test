@@ -49,7 +49,7 @@ def find_url_available_methods():
                     ANSWERS[url] = {method: resp.status}
             connection.close()
     print(f"\n{ANSWERS}")
-    if ERRORS:
+    if len(ERRORS) != 0:
         print("\nErrors: ")
         for i in ERRORS:
             print(f"    Line {i} is not a valid url")
